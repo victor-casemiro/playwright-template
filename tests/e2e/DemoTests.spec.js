@@ -1,43 +1,34 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test.describe("HTC - Home", () => {
-    test.beforeEach(async ({ page }) => {
-        await page.setViewportSize({ width: 1920, height: 1080 }); // Assuming "desktop" viewport size is 1920x1080
-        await page.setExtraHTTPHeaders({
-            "CF-Access-Client-Id": "0188aeafcb0547ae968bff7333f18486.access",
-            "CF-Access-Client-Secret": "f35c1c3cb656959552ef5ff4813086105c59662a4d87ffb47f19e10350f50eb5"
-        });
+test.beforeEach(async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 1080 }); // Assuming "desktop" viewport size is 1920x1080
+  await page.setExtraHTTPHeaders({
+    "CF-Access-Client-Id": "0188aeafcb0547ae968bff7333f18486.access",
+    "CF-Access-Client-Secret":
+      "f35c1c3cb656959552ef5ff4813086105c59662a4d87ffb47f19e10350f50eb5",
+  });
 
-        await page.goto("https://dev-htc-web.hometesterclub-dev.com/br/pt");
-    });
+  await page.goto("https://dev-htc-web.hometesterclub-dev.com/br/pt");
+});
 
-    test("Verificar navbar", async ({ page }) => {
-        await expect(page.locator('MuiStack-root mui-style-j7qwjs > a')).toHaveText('Avaliações');
-    });
+test("Verificar navbar", async ({ page }) => {
+  await expect(page.locator("MuiStack-root mui-style-j7qwjs > a")).toHaveText(
+    "Avaliações"
+  );
+});
 
+// ------------------------------------------------------------------
+// test("Verificar navbar", async ({ page }) => {
+//     await expect(page.locator('MuiStack-root mui-style-j7qwjs > a')).toHaveText('Avaliações');
+//     await expect(page).toHaveText('text=Testes');
+//     await expect(page).toHaveText('text=Dúvidas');
+//     await expect(page).toHaveText('text=Suporte');class="MuiStack-root mui-style-j7qwjs"
+// });
 
-
-
-
-
-
-
-
-
-
-
-    // -------------------------
-    // test("Verificar navbar", async ({ page }) => {
-    //     await expect(page.locator('MuiStack-root mui-style-j7qwjs > a')).toHaveText('Avaliações');
-    //     await expect(page).toHaveText('text=Testes');
-    //     await expect(page).toHaveText('text=Dúvidas');
-    //     await expect(page).toHaveText('text=Suporte');class="MuiStack-root mui-style-j7qwjs"
-    // });
-
-    // test("Verificar botões de Login", async ({ page }) => {
-    //     await expect(page).toHaveText('text=Entrar!');
-    //     await expect(page).toHaveText('text=Inscreva-se');
-    // });
+// test("Verificar botões de Login", async ({ page }) => {
+//     await expect(page).toHaveText('text=Entrar!');
+//     await expect(page).toHaveText('text=Inscreva-se');
+// });
 
 //     test("Verificar pagina Home", async ({ page }) => {
 //         await expect(page.url()).toBe("https://staging-htc-web.hometesterclub-dev.com/br/pt");
@@ -133,4 +124,3 @@ test.describe("HTC - Home", () => {
 //         await expect(page.url()).toContain('https://dev-htc-web.hometesterclub-dev.com/br/pt/feed');
 //         // await expect(page).toHaveText('text=Olá, Joao Vitor');
 //     });
-});
