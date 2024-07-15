@@ -20,6 +20,20 @@ test("Verificar navbar", async ({ page }) => {
   await expect(page.locator('#header_join_now_click')).toHaveText('Join now'); // We're using locator because there are 2 elements with the same text on the page
 });
 
+test("Verificar footer", async ({ page }) => {
+  await expect(page.getByLabel('Change Country')).toHaveText('Change Country');
+  await expect(page.getByRole('link', { name: 'For Brands' })).toHaveText('For Brands');
+  await expect(page.getByRole('link', { name: 'Disclosure' })).toHaveText('Disclosure');
+  await expect(page.getByRole('link', { name: 'Privacy Policy' })).toHaveText('Privacy Policy');
+  await expect(page.getByRole('link', { name: 'Terms of Use' })).toHaveText('Terms of Use');
+  await expect(page.getByRole('link', { name: 'DMCA' })).toHaveText('DMCA');
+  await expect(page.locator('#cookie_policy')).toHaveText('Cookie Policy');
+  await expect(page.locator('#faq_footer')).toHaveText('FAQ');
+  await expect(page.locator('#support_footer')).toHaveText('Support');
+  await expect(page.locator('#brand_power_company')).toBeVisible();
+  await expect(page.getByText('© 2024 The Brand Power')).toHaveText('© 2024 The Brand Power Company. All Rights Reserved.');
+});
+
 // ------------------------------------------------------------------
 // test("Verificar navbar", async ({ page }) => {
 //     await expect(page.locator('MuiStack-root mui-style-j7qwjs > a')).toHaveText('Avaliações');
