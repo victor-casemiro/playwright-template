@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
       "f35c1c3cb656959552ef5ff4813086105c59662a4d87ffb47f19e10350f50eb5",
   });
 
-  await page.goto("https://dev-htc-web.hometesterclub-dev.com/us/en");
+  await page.goto("https://dev-htc-web.hometesterclub-dev.com/us/en/support");
 });
 
 test("Verificar navbar", async ({ page }) => {
@@ -18,6 +18,20 @@ test("Verificar navbar", async ({ page }) => {
   await expect(page.locator('#header_faq_click')).toHaveText('FAQ');
   await expect(page.locator('#header_support_click')).toHaveText('Support'); // We're using locator because we need to specify the element's id
   await expect(page.locator('#header_join_now_click')).toHaveText('Join now'); // We're using locator because there are 2 elements with the same text on the page
+});
+
+test("create support with valid email", async ({ page }) => {
+  //await expect(page.locator('#header_support_click')).toHaveText('Support').click(); // We're using locator because we need to specify the element's id
+  await page.getByPlaceholder('What is your first name?').fill('Peter');
+  await page.getByPlaceholder('Type your best email').fill('peter@test.com');
+  await page.getByRole('checkbox').click();
+  await page.locator('div').filter({ hasText: /^Submit$/ }).isEnabled
+  await page.getByText('I\'m a brand or agency').isVisible();
+  await page.getByPlaceholder('Questions, comments, high').fill('help me to test this').press('Enter');
+  await page.locator('div').filter({ hasText: /^Submit$/ }).isEnabled
+
+
+  
 });
 
 // ------------------------------------------------------------------
