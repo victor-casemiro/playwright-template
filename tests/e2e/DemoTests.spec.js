@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.setViewportSize({ width: 1920, height: 1080 }); // Assuming "desktop" viewport size is 1920x1080
+  // await page.setViewportSize({ width: 1920, height: 1080 }); // Assuming "desktop" viewport size is 1920x1080
   await page.setExtraHTTPHeaders({
     "CF-Access-Client-Id": "0188aeafcb0547ae968bff7333f18486.access",
     "CF-Access-Client-Secret":
@@ -12,9 +12,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("Verificar navbar", async ({ page }) => {
-  await expect(page.locator("MuiStack-root mui-style-j7qwjs > a")).toHaveText(
-    "Avaliações"
-  );
+  await expect(page.getByRole('link', { name: 'Avaliações' })).toHaveText('Avaliações');
+  await expect(page.getByRole('link', { name: 'Testes' })).toHaveText('Testes');
+  await expect(page.getByRole('link', { name: 'Dúvidas' })).toHaveText('Dúvidas');
+  await expect(page.getByRole('link', { name: 'Entrar!' })).toHaveText('Entrar!');
+  await expect(page.locator('#header_support_click')).toHaveText('Suporte'); // We're using locator because we need to specify the element's id
+  await expect(page.locator('#header_join_now_click')).toHaveText('Inscreva-se'); // We're using locator because there are 2 elements with the same text on the page
 });
 
 // ------------------------------------------------------------------
