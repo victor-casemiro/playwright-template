@@ -29,7 +29,7 @@ export class SupportPage {
     async submitSupport() {
         await expect(this.page.getByRole('button', { name: 'Submit' })).toBeEnabled();
         await this.page.getByRole('button', { name: 'Submit' }).click();
-        await expect(this.page.getByText('Success')).toBeVisible();
+        await expect(this.page.getByRole('heading', { name: 'Success' })).toBeVisible();
         await this.page.getByRole('button', { name: 'Got it' }).click();
     }
 
