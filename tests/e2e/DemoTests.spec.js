@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto("https://dev-htc-web.hometesterclub-dev.com/us/en");
 });
 
-test("Verificar navbar", async ({ page }) => {
+test("Verify navbar", async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Reviews' })).toHaveText('Reviews');
   await expect(page.getByRole('link', { name: 'Tests' })).toHaveText('Tests');
   await expect(page.getByRole('link', { name: 'Sign In!' })).toHaveText('Sign in!');
@@ -19,7 +19,7 @@ test("Verificar navbar", async ({ page }) => {
   await expect(page.locator('#header_join_now_click')).toHaveText('Join now'); // We're using locator because there are 2 elements with the same text on the page
 });
 
-test("Verificar footer", async ({ page }) => {
+test("Verify footer", async ({ page }) => {
   await expect(page.getByLabel('Change Country')).toHaveText('Change Country');
   await expect(page.getByRole('link', { name: 'For Brands' })).toHaveText('For Brands');
   await expect(page.getByRole('link', { name: 'Disclosure' })).toHaveText('Disclosure');
