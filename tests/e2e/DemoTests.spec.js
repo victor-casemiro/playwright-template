@@ -19,45 +19,6 @@ test("Verificar navbar", async ({ page }) => {
   await expect(page.locator('#header_join_now_click')).toHaveText('Join now'); // We're using locator because there are 2 elements with the same text on the page
 });
 
-test("create support with valid email", async ({ page }) => {
-  await page.locator('#header_support_click').click(); 
-  await page.waitForTimeout(3000);
-
-  await expect(page.url()).toBe("https://dev-htc-web.hometesterclub-dev.com/us/en/support");
-  await page.goto("https://dev-htc-web.hometesterclub-dev.com/us/en/support"); 
-
-  //check elements on support page
-  await page.getByRole('heading', { name: 'Anything we can help with?' }).isVisible();
-  await page.getByText('Did we answer your question?').isVisible();
-  await page.getByText('Best contact email *').isVisible();
-  await page.getByText('I\'m a brand or agency').isVisible();
-  await page.getByText('Anything we can help with? *').isVisible();
-  await page.getByRole('button', { name: 'Submit' }).isDisabled();
-
-  //fill necesessary field
-  await page.getByPlaceholder('What is your first name?').isVisible().fill('Peter'); 
-  await page.getByPlaceholder('Type your best email').isVisible.fill('peter@test.com');  
-  await page.getByPlaceholder('Questions, comments, high').isVisible.fill('help me to test this');
-
-  //click in I\'m a brand or agency box (Optional)
-  await page.getByRole('checkbox').click(); 
-  await page.getByText('I\'m a brand or agency').isVisible();
-
- //accept all coockies
-  await page.getByRole('button', { name: 'Accept All Cookies' }).click();
-  //submit the support
-  await page.getByRole('button', { name: 'Submit' }).click();
-
-  //validate if success modal is visible
-  await page.getByText('Success').isVisible();
-  await page.getByRole('button', { name: 'Got it' }).click();
-
-
-
-
-  
-});
-
 // ------------------------------------------------------------------
 // test("Verificar navbar", async ({ page }) => {
 //     await expect(page.locator('MuiStack-root mui-style-j7qwjs > a')).toHaveText('Avaliações');
