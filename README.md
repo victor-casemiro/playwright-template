@@ -22,6 +22,7 @@ This template is designed to serve as a foundation for web testing projects usin
 - To run a specific test file: `npx playwright test {PATH_OF_TEST}`
 - To run tests with headed browsers: `npx playwright test --ui`
 - To show the test report: `npx playwright show-report`
+- To run load tests: `k6 run {PATH_OF_TEST}`
 
 ## Structure
 
