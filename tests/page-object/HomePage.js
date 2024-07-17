@@ -44,4 +44,10 @@ export class HomePage {
         await expect(this.page.getByText('© 2024 The Brand Power')).toHaveText('© 2024 The Brand Power Company. All Rights Reserved.');
     }
 
+    async goToJoinPage() {
+        await this.page.locator('#header_join_now_click').click();
+        await this.page.waitForTimeout(2000);
+        await expect(this.page.url()).toBe("https://dev-htc-web.hometesterclub-dev.com/us/en/account/join");
+    }
+
 }
