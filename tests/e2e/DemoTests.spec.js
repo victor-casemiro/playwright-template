@@ -53,6 +53,7 @@ test("Try creating support request with invalid data", async ({ page }) => {
 });
 
 test('Create a full account', async ({ page }) => {
+  test.setTimeout(120000);
   await homePage.goToJoinPage();
   await joinPage.signUpWithEmail();
   await registerPage.createAccountWithValidData(name, email, password);

@@ -16,7 +16,7 @@ test('Top of Home page should be equals as screenshot', async ({ page }) => {
 });
 
 
-test('Top of Home page should be equals as screenshot2', async ({ page }) => {
+test('Middle of Home page should be equals as screenshot', async ({ page }) => {
     await page.locator('div:nth-child(3) > div:nth-child(2) > div > div > div').scrollIntoViewIfNeeded();
     await expect(page).toHaveScreenshot('ViewAll.png', { maxDiffPixels: 500 });
 });
