@@ -2,7 +2,10 @@
   "name": "playwright-template",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "visual-tests": "npx playwright test 'tests/visual-tests/HomeVisual.spec.js' --reporter=dot || npx playwright test '/tests/visual-tests/HomeVisual.spec.js' --reporter=dot",
+    "test": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
