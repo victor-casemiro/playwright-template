@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "visual-tests": "npx playwright test '/visual-tests/HomeVisual.spec.js' --reporter=dot || npx playwright test '/visual-tests/HomeVisual.spec.js' --reporter=dot",
-    "test": "npx playwright test"
+    "visual-tests": "npx playwright test '/tests/visual-tests' --reporter=dot || npx playwright test '/tests/visual-tests' --reporter=dot",
+    "test": "npx playwright test tests/api tests/e2e"
   },
   "keywords": [],
   "author": "",
