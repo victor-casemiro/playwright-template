@@ -25,7 +25,7 @@ test.beforeEach(async ({ page }) => {
   registerPage = new RegisterPage(page);
   await homePage.goTo();
   await page.waitForTimeout(1000);
-  await page.getByRole('button', { name: 'Accept All Cookies' }).click();
+  // await page.getByRole('button', { name: 'Accept All Cookies' }).click();
 });
 
 test("Verify navbar", async () => {
