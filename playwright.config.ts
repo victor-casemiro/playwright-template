@@ -1,4 +1,6 @@
 // @ts-check
+import type { AzureReporterOptions } from '@alex_neo/playwright-azure-reporter/dist/playwright-azure-reporter';
+
 const { defineConfig, devices } = require('@playwright/test');
 
 /**
@@ -21,28 +23,55 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html', { outputFolder: 'playwright-report' }],
+    ['junit', { outputFile: 'test-results/results.xml' }],
+    [
+      '@alex_neo/playwright-azure-reporter',
+      {
+        orgUrl: 'https://dev.azure.com/jhonatanpereira0088',
+        token: '1m3jOpTH9KQUmJA2fhsUVt76au61pqo6q5Lq1XRKvWpFxajRbbohJQQJ99BFACAAAAAHPvqVAAASAZDO3AWO',
+        planId: 1512,
+        projectName: 'Demo Project',
+        environment: 'QA',
+        logging: true,
+        testRunTitle: 'Playwright Test Run',
+        publishTestResultsMode: 'testRun',
+        uploadAttachments: true,
+        attachmentsType: ['screenshot', 'video', 'trace'],
+        testCaseIdMatcher: /Test Case (\d+):/,
+        testRunConfig: {
+          owner: {
+            displayName: 'Jhonatan da Silva Pereira',
+          },
+          comment: 'Playwright Test Run',
+          configurationIds: [3],
+        },
+      } as AzureReporterOptions,
+    ],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://www.saucedemo.com/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    video: 'on-first-retry',
+    trace: 'on', // Collect trace for all tests
+    video: 'on', // Record videos for all tests
+    screenshot: 'on', // Enable screenshots on failure or always
   },
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
-    // },
-
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
     },
+
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
     // {
     //   name: 'webkit',
