@@ -22,13 +22,20 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'npx playwright install'
+    script: 'npx playwright install --with-deps'
   displayName: 'install playwright'
 
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'npx playwright test'
+    script: 'npm run test'
+  continueOnError: true
+  displayName: 'run test'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'npm run visual-tests'
   continueOnError: true
   displayName: 'run test'
 
