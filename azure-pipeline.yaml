@@ -32,11 +32,12 @@ steps:
   continueOnError: true
   displayName: 'run test'
 
-- task: PublishHtmlReport@1
-  inputs:
-    reportDir: '$(System.DefaultWorkingDirectory)/playwright-report/index.html'
+# - task: PublishHtmlReport@1
+#   inputs:
+#     reportDir: '$(System.DefaultWorkingDirectory)/playwright-report/index.html'
 
 - task: PublishTestResults@2
+  continueOnError: true
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'test-results/results.xml'
