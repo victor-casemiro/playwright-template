@@ -30,7 +30,7 @@ module.exports = defineConfig({
       '@alex_neo/playwright-azure-reporter',
       {
         orgUrl: 'https://dev.azure.com/jhonatanpereira0088',
-        token: '1m3jOpTH9KQUmJA2fhsUVt76au61pqo6q5Lq1XRKvWpFxajRbbohJQQJ99BFACAAAAAHPvqVAAASAZDO3AWO',
+        token: '9RjMBDFEY9wWThbxYDOhJThVJxjqVqCiJPQVpHv9iDGdNOTPguwSJQQJ99BGACAAAAAHPvqVAAASAZDO1MuQ',
         planId: 1512,
         projectName: 'Demo Project',
         environment: 'QA',
