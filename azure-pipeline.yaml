@@ -22,7 +22,7 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'npx playwright install --with-deps'
+    script: 'npx playwright install'
   displayName: 'install playwright'
 
 - task: Bash@3
@@ -32,16 +32,14 @@ steps:
   continueOnError: true
   displayName: 'run test'
 
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'npm run visual-tests'
-  continueOnError: true
-  displayName: 'run test'
-
 - task: PublishHtmlReport@1
   inputs:
     reportDir: '$(System.DefaultWorkingDirectory)/playwright-report/index.html'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'test-results/results.xml'
 
 - task: PublishPipelineArtifact@1
   inputs:
