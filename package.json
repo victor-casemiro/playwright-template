@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "visual-tests": "npx playwright test '/tests/visual-tests' --reporter=dot || npx playwright test '/tests/visual-tests' --reporter=dot",
-    "test": "npx playwright test tests/e2e/LoginTests.spect.js"
+    "test": "npx playwright test tests/e2e/LoginTests.spec.js"
   },
   "keywords": [],
   "author": "",
